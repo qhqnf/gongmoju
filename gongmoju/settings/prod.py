@@ -1,5 +1,3 @@
 from .common import *
 
-ALLOWED_HOSTS = ["localhost"]
-
-DEBUG = False
+DEBUG = os.environ.get("DEBUG") in ["True", "t", "TRUE", "1"]
