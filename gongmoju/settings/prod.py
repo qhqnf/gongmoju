@@ -9,5 +9,6 @@ DATABASES = {
         "USER": os.environ["DB_USER"],
         "PASSWORD": os.environ["DB_PASSWORD"],
         "NAME": os.environ.get("DB_NAME", "postgres"),
+        "PORT": "5432",
     }
 }
