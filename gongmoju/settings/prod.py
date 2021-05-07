@@ -1,6 +1,6 @@
 from .common import *
 
-# DEBUG = os.environ.get("DEBUG") in ["True", "t", "TRUE", "1"]
+DEBUG = os.environ.get("DEBUG") in ["True", "t", "TRUE", "1"]
 
 DATABASES = {
     "default": {

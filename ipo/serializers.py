@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.serializers import StringRelatedField
-from .models import Ipo, SecurityCompany
+from .models import Ipo, SecurityCompany, IpoException
 
 class SecurityCompanySerializer(serializers.ModelSerializer):
     class Meta:
@@ -17,3 +17,8 @@ class IpoSerializer(serializers.ModelSerializer):
         model = Ipo
         fields = "__all__"
         read_only_fields = ("security_company_set",)
+
+class IpoExceptionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = IpoException
+        exclude = ["id"]

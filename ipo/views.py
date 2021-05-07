@@ -5,8 +5,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST
 
-from .models import Ipo, SecurityCompany
-from .serializers import IpoSerializer, SecurityCompanySerializer
+from .models import Ipo, SecurityCompany, IpoException
+from .serializers import IpoSerializer, SecurityCompanySerializer, IpoExceptionSerializer
 
 class IpoView(APIView):
     def get(self, request):
@@ -30,8 +30,6 @@ class IpoView(APIView):
                 return Response(ipo_serializer.errors)
         return Response(locations)
 
-
-
 class IpoRetrieveView(APIView):
     def get(self, request, company_code):
         qs = Ipo.objects.get(company_code=company_code)
@@ -50,4 +48,8 @@ class IpoRetrieveView(APIView):
         else:
             return Response(ipo_serializer.errors ,status=HTTP_400_BAD_REQUEST)
 
-            
+class IpoExceptionView(APIView):
+    def get(self, request):
+        qs = IpoException.objects.all()
+        data = IpoExceptionSerializer(qs, many=True).data
+        return Response(data)

@@ -29,3 +29,13 @@ class SecurityCompany(models.Model):
     def __str__(self):
         name = f"[{self.ipo}] {self.company_name}"
         return name
+
+class IpoException(models.Model):
+    class Meta:
+        db_table = "ipo_exception"
+
+    company_code = models.CharField(max_length=32)
+    company_name = models.CharField(max_length=32)
+
+    def __str__(self):
+        return self.company_name
